@@ -37,4 +37,14 @@
   
 </div>
 
-{% schema %} { "name": "Main Section" } {% endschema %}
+{% schema %} 
+{ 
+    "name": "Main Section", 
+    "settings": [{
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+    }]
+} 
+{% endschema %}
