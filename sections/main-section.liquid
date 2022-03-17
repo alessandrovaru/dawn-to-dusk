@@ -7,6 +7,7 @@
     assign number = 5
     assign array_string = "Rafael, Juan, Pedro, Ismael, Jose"
     assign array = array_string | split: ","
+    assign collection = collections['Photography']
 %}
 
 <div class="central-div">
@@ -19,6 +20,21 @@
         <li>{{ name }}</li>
     {% endif %}
   {% endfor %}
+  <p>The name of this collection is: {{ collection.title }}</p>
+  <p>The description of this collection is: {{ collection.description }}</p>
+  {% for product in collection.products %}
+    <li>
+        <a href={{ product.url }}>
+            {{ product.title }} - {{ product.price | money }} - 
+            {% if product.available != true %}
+                [SOLD OUT]
+            {% else %}
+                Available
+            {% endif %}
+        </a>
+    </li>
+  {% endfor %}
+  
 </div>
 
 {% schema %} { "name": "Main Section" } {% endschema %}
