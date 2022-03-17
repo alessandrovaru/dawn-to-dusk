@@ -1,8 +1,13 @@
 {
   "sections": {
     "main": {
-      "type": "main-section"
+      "type": "main-section",
+      "settings": {
+        "background_color": "#232c78"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
