@@ -1,11 +1,24 @@
-{{ 'main-section.css' | asset_url | stylesheet_tag }}
+{{ "main-section.css" | asset_url | stylesheet_tag }}
+
+{%liquid
+    assign title = "Hola, Mundo!"
+    assign subtitle = "This is a subtitle"
+    assign body = "This is the body"
+    assign number = 5
+    assign array_string = "Rafael, Juan, Pedro, Ismael, Jose"
+    assign array = array_string | split: ","
+%}
 
 <div class="central-div">
-    <p>Hola</p>
+  <h1>{{ title }}</h1>
+  <h2>{{ subtitle }}</h2>
+  <p>{{ body }}</p>
+  <p>{{ number | plus: 5 }}</p>
+  {% for name in array %}
+    {% if name.size > 5 %}
+        <li>{{ name }}</li>
+    {% endif %}
+  {% endfor %}
 </div>
 
-{% schema %}
-    {
-        "name": "Main Section"
-    }
-{% endschema %}
+{% schema %} { "name": "Main Section" } {% endschema %}
