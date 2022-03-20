@@ -1,40 +1,10 @@
 {{ "main-section.css" | asset_url | stylesheet_tag }}
 
-{%liquid
-    assign title = "Hola, Mundo!"
-    assign subtitle = "This is a subtitle"
-    assign body = "This is the body"
-    assign number = 5
-    assign array_string = "Rafael, Juan, Pedro, Ismael, Jose"
-    assign array = array_string | split: ","
-    assign collection = collections['Photography']
-%}
 
 <div style="background-color: {{ section.settings.background_color }};" class="central-div">
-  <h1>{{ title }}</h1>
-  <h2>{{ subtitle }}</h2>
-  <p>{{ body }}</p>
-  <p>{{ number | plus: 5 }}</p>
-  {% for name in array %}
-    {% if name.size > 5 %}
-        <li>{{ name }}</li>
-    {% endif %}
-  {% endfor %}
-  <p>The name of this collection is: {{ collection.title }}</p>
-  <p>The description of this collection is: {{ collection.description }}</p>
-  {% for product in collection.products %}
-    <li>
-        <a href={{ product.url }}>
-            {{ product.title }} - {{ product.price | money }} - 
-            {% if product.available != true %}
-                [SOLD OUT]
-            {% else %}
-                Available
-            {% endif %}
-        </a>
-    </li>
-  {% endfor %}
-  
+  <h1>{{ section.settings.title }}</h1>
+  <h2>{{ section.settings.subtitle }}</h2>
+  <p>{{ section.settings.body }}</p>
 </div>
 
 {% schema %} 
@@ -45,6 +15,21 @@
         "id": "background_color",
         "label": "Background Color",
         "default": "#ffffff"
+    }, {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Hola, Mundo!"
+    }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "This is a subtitle"
+    }, {
+        "type": "text",
+        "id": "body",
+        "label": "Body",
+        "default": "This is the body"
     }]
 } 
 {% endschema %}
